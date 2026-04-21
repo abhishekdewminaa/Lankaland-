@@ -12,7 +12,8 @@ import {
   Award, 
   Home as HomeIcon, 
   Briefcase,
-  Globe
+  Globe,
+  Calculator
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { FEATURED_PROPERTIES } from '../constants';
@@ -339,6 +340,15 @@ export default function Home() {
                  <p className="text-4xl font-black tabular-nums">321.40</p>
                  <p className="text-[9px] font-bold uppercase opacity-60">LKR / USD • 21 Apr 2026</p>
               </div>
+
+              <Link to="/calculator" className="block bg-white rounded-[2rem] p-8 border border-slate-200 shadow-sm relative overflow-hidden group hover:border-brand-green transition-all">
+                 <div className="absolute -right-4 -bottom-4 text-slate-100 group-hover:text-brand-green/10 transition-colors duration-500">
+                   <Calculator size={100} />
+                 </div>
+                 <h3 className="text-brand-dark font-black uppercase text-xs tracking-widest mb-3 relative z-10">Mortgage Tool</h3>
+                 <p className="text-2xl font-black text-slate-900 leading-tight relative z-10 mb-2">Calculate <span className="text-brand-green">Loans</span></p>
+                 <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest relative z-10">Estimate monthly payments instantly →</p>
+              </Link>
            </div>
         </div>
       </section>

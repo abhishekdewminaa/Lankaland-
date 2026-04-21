@@ -28,6 +28,22 @@ export default function Footer() {
               <a href="#" className="hover:text-brand-green transition-colors"><Facebook size={20} /></a>
               <a href="#" className="hover:text-brand-green transition-colors"><Instagram size={20} /></a>
               <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="hover:text-[#25D366] transition-colors"><MessageCircle size={20} /></a>
+              <a href={CONTACT_INFO.tiktok} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors" title="Follow us on TikTok">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="lucide lucide-tiktok"
+                >
+                  <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                </svg>
+              </a>
               <a href="#" className="hover:text-brand-green transition-colors"><Linkedin size={20} /></a>
             </div>
           </div>
@@ -37,6 +53,7 @@ export default function Footer() {
             <h3 className="text-white font-semibold mb-6 text-lg">Quick Links</h3>
             <ul className="space-y-4">
               <li><Link to="/properties" className="hover:text-white transition-colors flex items-center group"><ExternalLink size={14} className="mr-2 opacity-0 group-hover:opacity-100 transition-all" /> All Properties</Link></li>
+              <li><Link to="/calculator" className="hover:text-white transition-colors flex items-center group"><ExternalLink size={14} className="mr-2 opacity-0 group-hover:opacity-100 transition-all" /> Mortgage Calculator</Link></li>
               <li><Link to="/services" className="hover:text-white transition-colors flex items-center group"><ExternalLink size={14} className="mr-2 opacity-0 group-hover:opacity-100 transition-all" /> Professional Services</Link></li>
               <li><Link to="/about" className="hover:text-white transition-colors flex items-center group"><ExternalLink size={14} className="mr-2 opacity-0 group-hover:opacity-100 transition-all" /> About LankaLand</Link></li>
               <li><Link to="/contact" className="hover:text-white transition-colors flex items-center group"><ExternalLink size={14} className="mr-2 opacity-0 group-hover:opacity-100 transition-all" /> Contact Support</Link></li>

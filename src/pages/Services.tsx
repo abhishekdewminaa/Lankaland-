@@ -63,6 +63,11 @@ export default function Services() {
       desc: "End-to-end support for developing your land into residential schemes or commercial complexes."
     },
     {
+      icon: <Calculator className="text-brand-green" size={32} />,
+      title: "Mortgage Planning",
+      desc: "Use our professional calculators to estimate your loan repayments and plan your property budget effectively."
+    },
+    {
       icon: <Gavel className="text-brand-dark" size={32} />,
       title: "Legal Consultancy",
       desc: "Expert advice on Sri Lankan property laws, inheritance, and regulatory compliance for local and foreign buyers."
@@ -213,6 +218,16 @@ export default function Services() {
                   <span>Total Duration</span>
                   <span className="text-white font-medium">{loanTerm} Years</span>
                 </div>
+              </div>
+
+              <div className="pt-4 relative z-10">
+                <a 
+                  href="/calculator" 
+                  className="inline-flex items-center space-x-2 text-brand-green text-xs font-bold uppercase tracking-widest hover:text-white transition-colors"
+                >
+                  <Calculator size={14} />
+                  <span>Use Advanced Calculator →</span>
+                </a>
               </div>
 
               <p className="text-slate-500 text-xs italic max-w-sm relative z-10">

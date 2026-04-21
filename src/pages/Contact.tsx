@@ -49,6 +49,31 @@ export default function Contact() {
                 highlightColor="border-[#25D366] hover:bg-[#25D366]/5"
               />
             </a>
+            <a href={CONTACT_INFO.tiktok} target="_blank" rel="noopener noreferrer" className="block outline-none focus:ring-2 focus:ring-black rounded-3xl group/tt">
+              <ContactDetailCard
+                icon={
+                  <div className="text-black group-hover/tt:rotate-12 transition-transform">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                    </svg>
+                  </div>
+                }
+                title="TikTok Account"
+                detail="@.lankaland.lk"
+                sub="Watch Property Tours"
+                highlightColor="border-black hover:bg-black/5"
+              />
+            </a>
             <ContactDetailCard
               icon={<Mail className="text-brand-orange" />}
               title="Email Us"

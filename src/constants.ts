@@ -67,6 +67,7 @@ export const NAV_LINKS = [
   { name: 'Home', href: '/' },
   { name: 'Properties', href: '/properties' },
   { name: 'Services', href: '/services' },
+  { name: 'Calculator', href: '/calculator' },
   { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
 ];
@@ -76,5 +77,6 @@ export const CONTACT_INFO = {
   phoneAlt: '011 492 2492',
   whatsapp: '94773951560', // Correct international format for WhatsApp API
   address: '95 Metro Complex, Kirillawala, Kadawatha',
-  email: 'info@lankaland.lk'
+  email: 'info@lankaland.lk',
+  tiktok: 'https://www.tiktok.com/@.lankaland.lk?is_from_webapp=1&sender_device=pc'
 };
