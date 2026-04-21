@@ -12,6 +12,7 @@ export interface Property {
   features: string[];
   bedrooms?: number;
   bathrooms?: number;
+  coordinates?: { lat: number; lng: number };
 }
 
 export interface Service {

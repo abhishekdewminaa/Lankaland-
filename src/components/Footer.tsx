@@ -1,18 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, Twitter, Linkedin, Mail, Phone, MapPin, ExternalLink } from 'lucide-react';
+import { Facebook, Instagram, Twitter, Linkedin, Mail, Phone, MapPin, ExternalLink, MessageCircle } from 'lucide-react';
+import { CONTACT_INFO } from '../constants';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const whatsappUrl = `https://wa.me/${CONTACT_INFO.whatsapp}`;
 
   return (
-    <footer className="bg-slate-900 text-slate-300 pt-16 pb-8">
+    <footer className="bg-brand-dark text-slate-300 pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand Info */}
           <div className="space-y-6">
             <Link to="/" className="inline-block">
-               <span className="font-serif font-bold text-white text-2xl">Lanka<span className="text-brand-red">Land</span>.lk</span>
+               <span className="font-serif font-black text-2xl tracking-tight">
+                 <span className="text-brand-green">Lanka</span>
+                 <span className="text-brand-red">l</span>
+                 <span className="text-brand-orange">and</span>
+                 <span className="text-brand-blue">.lk</span>
+               </span>
             </Link>
             <p className="text-slate-400 leading-relaxed">
               Sri Lanka's most trusted real estate partner. Providing fast, accurate, and transparent services for buying and selling property across the island.
@@ -20,7 +27,7 @@ export default function Footer() {
             <div className="flex space-x-4">
               <a href="#" className="hover:text-brand-green transition-colors"><Facebook size={20} /></a>
               <a href="#" className="hover:text-brand-green transition-colors"><Instagram size={20} /></a>
-              <a href="#" className="hover:text-brand-green transition-colors"><Twitter size={20} /></a>
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="hover:text-[#25D366] transition-colors"><MessageCircle size={20} /></a>
               <a href="#" className="hover:text-brand-green transition-colors"><Linkedin size={20} /></a>
             </div>
           </div>
@@ -53,15 +60,15 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start space-x-3">
                 <MapPin className="text-brand-green mt-1 shrink-0" size={18} />
-                <span>123 Colombo Road, Kotte, Sri Lanka</span>
+                <span>{CONTACT_INFO.address}</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="text-brand-green shrink-0" size={18} />
-                <span>+94 11 234 5678</span>
+                <span>{CONTACT_INFO.phone} / {CONTACT_INFO.phoneAlt}</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="text-brand-green shrink-0" size={18} />
-                <span>info@lankaland.lk</span>
+                <span>{CONTACT_INFO.email}</span>
               </li>
             </ul>
           </div>

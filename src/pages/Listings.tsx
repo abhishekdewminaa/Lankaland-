@@ -1,16 +1,75 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Search, Filter, SlidersHorizontal, MapPin } from 'lucide-react';
 import { motion } from 'motion/react';
 import { FEATURED_PROPERTIES } from '../constants';
 import PropertyCard from '../components/PropertyCard';
 import PropertyComparison from '../components/PropertyComparison';
 
+// Haversine formula to calculate distance between two points in km
+function calculateDistance(lat1: number, lon1: number, lat2: number, lon2: number) {
+  const R = 6371; // Radius of the earth in km
+  const dLat = (lat2 - lat1) * (Math.PI / 180);
+  const dLon = (lon2 - lon1) * (Math.PI / 180);
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(lat1 * (Math.PI / 180)) *
+      Math.cos(lat2 * (Math.PI / 180)) *
+      Math.sin(dLon / 2) *
+      Math.sin(dLon / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  const d = R * c; // Distance in km
+  return d;
+}
+
 export default function Listings() {
   const [filter, setFilter] = useState('All');
-  
-  const filteredProperties = filter === 'All' 
+  const [sortBy, setSortBy] = useState('Newest First');
+  const [userLocation, setUserLocation] = useState<{ lat: number, lng: number } | null>(null);
+  const [isLocating, setIsLocating] = useState(false);
+
+  const filteredProperties = (filter === 'All' 
     ? FEATURED_PROPERTIES 
-    : FEATURED_PROPERTIES.filter(p => p.type === filter);
+    : FEATURED_PROPERTIES.filter(p => p.type === filter))
+    .sort((a, b) => {
+      if (sortBy === 'Price: Low to High') return a.price - b.price;
+      if (sortBy === 'Price: High to Low') return b.price - a.price;
+      if (sortBy === 'Nearest' && userLocation) {
+        const distA = a.coordinates ? calculateDistance(userLocation.lat, userLocation.lng, a.coordinates.lat, a.coordinates.lng) : Infinity;
+        const distB = b.coordinates ? calculateDistance(userLocation.lat, userLocation.lng, b.coordinates.lat, b.coordinates.lng) : Infinity;
+        return distA - distB;
+      }
+      return 0; // Default: Newest First (would need a date field for real newest)
+    });
+
+  const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = e.target.value;
+    setSortBy(value);
+
+    if (value === 'Nearest' && !userLocation) {
+      setIsLocating(true);
+      if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            setUserLocation({
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            });
+            setIsLocating(false);
+          },
+          (error) => {
+            console.error("Error getting location:", error);
+            setIsLocating(false);
+            alert("Could not retrieve your location. Please check your browser permissions.");
+            setSortBy('Newest First');
+          }
+        );
+      } else {
+        alert("Geolocation is not supported by your browser.");
+        setIsLocating(false);
+        setSortBy('Newest First');
+      }
+    }
+  };
 
   return (
     <div className="bg-slate-50 min-h-screen pb-24">
@@ -90,25 +149,45 @@ export default function Listings() {
               <p className="text-slate-500 font-medium">Showing <span className="text-slate-900 font-bold">{filteredProperties.length}</span> results</p>
               <div className="flex items-center gap-2">
                 <span className="text-sm font-medium text-slate-400">Sort by:</span>
-                <select className="bg-transparent border-none text-sm font-bold text-brand-dark focus:ring-0 cursor-pointer outline-none">
-                  <option>Newest First</option>
-                  <option>Price: Low to High</option>
-                  <option>Price: High to Low</option>
-                </select>
+                <div className="relative flex items-center">
+                  <select 
+                    value={sortBy}
+                    onChange={handleSortChange}
+                    className="bg-transparent border-none text-sm font-bold text-brand-dark focus:ring-0 cursor-pointer outline-none appearance-none pr-6"
+                  >
+                    <option>Newest First</option>
+                    <option value="Nearest">Nearest</option>
+                    <option>Price: Low to High</option>
+                    <option>Price: High to Low</option>
+                  </select>
+                  {isLocating && (
+                    <motion.div 
+                      animate={{ rotate: 360 }}
+                      transition={{ repeat: Infinity, duration: 1, ease: 'linear' }}
+                      className="absolute right-0 w-3 h-3 border-2 border-brand-green border-t-transparent rounded-full"
+                    />
+                  )}
+                </div>
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {filteredProperties.map((property, idx) => (
-                <motion.div
-                  key={property.id}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: idx * 0.05 }}
-                >
-                  <PropertyCard property={property} />
-                </motion.div>
-              ))}
+              {filteredProperties.map((property, idx) => {
+                const distance = (sortBy === 'Nearest' && userLocation && property.coordinates)
+                  ? calculateDistance(userLocation.lat, userLocation.lng, property.coordinates.lat, property.coordinates.lng)
+                  : undefined;
+
+                return (
+                  <motion.div
+                    key={property.id}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: idx * 0.05 }}
+                  >
+                    <PropertyCard property={property} distance={distance} />
+                  </motion.div>
+                );
+              })}
             </div>
 
             {/* Pagination Placeholder */}

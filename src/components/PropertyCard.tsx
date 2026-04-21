@@ -1,16 +1,18 @@
 import React from 'react';
-import { MapPin, Maximize, BedDouble, Bath, ArrowRight, TableProperties } from 'lucide-react';
+import { MapPin, Maximize, BedDouble, Bath, ArrowRight, TableProperties, MessageCircle } from 'lucide-react';
 import { Property } from '../types';
 import { cn } from '../lib/utils';
 import { motion } from 'motion/react';
 import { useComparison } from '../context/ComparisonContext';
+import { CONTACT_INFO } from '../constants';
 
 interface PropertyCardProps {
   property: Property;
   className?: string;
+  distance?: number;
 }
 
-export default function PropertyCard({ property, className }: PropertyCardProps) {
+export default function PropertyCard({ property, className, distance }: PropertyCardProps) {
   const { isComparing, addToComparison, removeFromComparison } = useComparison();
   const comparing = isComparing(property.id);
 
@@ -30,6 +32,8 @@ export default function PropertyCard({ property, className }: PropertyCardProps)
     }
   };
 
+  const whatsappUrl = `https://wa.me/${CONTACT_INFO.whatsapp}?text=${encodeURIComponent(`Hi LankaLand, I'm interested in the "${property.title}" in ${property.location}. Can I get more details?`)}`;
+
   return (
     <motion.div
       whileHover={{ y: -5 }}
@@ -38,7 +42,7 @@ export default function PropertyCard({ property, className }: PropertyCardProps)
         className
       )}
     >
-      {/* Image Container */}
+      {/* ... previous image code ... */}
       <div className="relative aspect-[4/3] overflow-hidden">
         <img
           src={property.imageUrl}
@@ -75,9 +79,16 @@ export default function PropertyCard({ property, className }: PropertyCardProps)
 
       {/* Content */}
       <div className="p-6 flex flex-col flex-grow">
-        <div className="flex items-center text-slate-500 text-sm mb-2">
-          <MapPin size={14} className="mr-1 text-brand-red" />
-          {property.location}
+        <div className="flex items-center justify-between text-slate-500 text-sm mb-2">
+          <div className="flex items-center">
+            <MapPin size={14} className="mr-1 text-brand-red" />
+            {property.location}
+          </div>
+          {distance !== undefined && distance !== Infinity && (
+            <span className="text-[10px] font-black uppercase text-brand-blue bg-brand-blue/10 px-2 py-0.5 rounded">
+              {distance < 1 ? '< 1 km' : `${distance.toFixed(1)} km`}
+            </span>
+          )}
         </div>
         <h3 className="font-serif text-xl font-bold text-slate-900 mb-4 line-clamp-1 group-hover:text-brand-green transition-colors">
           {property.title}
@@ -105,10 +116,31 @@ export default function PropertyCard({ property, className }: PropertyCardProps)
             </div>
           </div>
 
-          <button className="w-full flex items-center justify-center space-x-2 bg-brand-green text-white py-3 rounded-xl transition-all font-black uppercase text-[10px] tracking-widest shadow-lg shadow-brand-green/20 hover:bg-brand-dark hover:shadow-brand-dark/20 group/btn">
-            <span>More Details</span>
-            <ArrowRight size={14} className="transition-transform group-hover/btn:translate-x-1" />
-          </button>
+          <div className="flex gap-2">
+            <button className="flex-1 flex items-center justify-center space-x-2 bg-brand-green text-white py-3 rounded-xl transition-all font-black uppercase text-[10px] tracking-widest shadow-lg shadow-brand-green/20 hover:bg-brand-dark hover:shadow-brand-dark/20 group/btn">
+              <span>More Details</span>
+              <ArrowRight size={14} className="transition-transform group-hover/btn:translate-x-1" />
+            </button>
+            <a 
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center bg-[#25D366] text-white p-3 rounded-xl transition-all shadow-lg shadow-[#25D366]/20 hover:bg-[#20ba5a] hover:shadow-[#20ba5a]/20 group/wa"
+              title="Chat on WhatsApp"
+            >
+              <motion.div
+                animate={{ rotate: [0, -10, 10, -10, 0] }}
+                transition={{ 
+                  duration: 2, 
+                  repeat: Infinity, 
+                  repeatDelay: 3 
+                }}
+                className="group-hover/wa:scale-110 transition-transform"
+              >
+                <MessageCircle size={18} />
+              </motion.div>
+            </a>
+          </div>
         </div>
       </div>
     </motion.div>

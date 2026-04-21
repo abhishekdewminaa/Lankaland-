@@ -14,7 +14,8 @@ export const FEATURED_PROPERTIES: Property[] = [
     description: 'A stunning modern villa located right on the pristine beaches of Galle. Features a private infinity pool and panoramic ocean views.',
     features: ['Ocean View', 'Private Pool', 'Modern Design', 'High Security'],
     bedrooms: 5,
-    bathrooms: 4
+    bathrooms: 4,
+    coordinates: { lat: 6.0367, lng: 80.2170 }
   },
   {
     id: '2',
@@ -28,6 +29,7 @@ export const FEATURED_PROPERTIES: Property[] = [
     imageUrl: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2064&auto=format&fit=crop',
     description: 'Exclusive residential block in a highly developing neighborhood. Perfect for building your dream home.',
     features: ['Electricity', 'Water', 'Carpeted Road', 'Gated Community'],
+    coordinates: { lat: 6.8797, lng: 79.9328 }
   },
   {
     id: '3',
@@ -42,7 +44,8 @@ export const FEATURED_PROPERTIES: Property[] = [
     description: 'Chic apartment in the heart of Colombo. Close to schools, hospitals, and major shopping malls.',
     features: ['24/7 Security', 'Gym', 'Parking', 'Back-up Generator'],
     bedrooms: 2,
-    bathrooms: 2
+    bathrooms: 2,
+    coordinates: { lat: 6.9142, lng: 79.8519 }
   },
   {
     id: '4',
@@ -56,6 +59,7 @@ export const FEATURED_PROPERTIES: Property[] = [
     imageUrl: 'https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?q=80&w=2070&auto=format&fit=crop',
     description: 'Breathtaking mountain view land in the hill capital. Ideal for a holiday cottage or eco-resort.',
     features: ['Mountain View', 'Cool Climate', 'Fruit Trees'],
+    coordinates: { lat: 7.2906, lng: 80.6337 }
   }
 ];
 
@@ -66,3 +70,11 @@ export const NAV_LINKS = [
   { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
 ];
+
+export const CONTACT_INFO = {
+  phone: '077 395 1560',
+  phoneAlt: '011 492 2492',
+  whatsapp: '94773951560', // Correct international format for WhatsApp API
+  address: '95 Metro Complex, Kirillawala, Kadawatha',
+  email: 'info@lankaland.lk'
+};

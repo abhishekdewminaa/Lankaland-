@@ -2,6 +2,7 @@ import React from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import WhatsAppFloating from './WhatsAppFloating';
 import { motion, AnimatePresence } from 'motion/react';
 
 export default function Layout() {
@@ -23,6 +24,7 @@ export default function Layout() {
           </motion.div>
         </AnimatePresence>
       </main>
+      <WhatsAppFloating />
       <Footer />
     </div>
   );

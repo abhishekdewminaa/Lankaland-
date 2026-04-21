@@ -23,15 +23,15 @@ export default function Home() {
   return (
     <div className="space-y-24 pb-24">
       {/* Hero Section */}
-      <section className="relative min-h-[700px] flex items-center overflow-hidden bg-slate-900 pt-16">
+      <section className="relative min-h-[700px] flex items-center overflow-hidden bg-brand-dark pt-16">
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=2158&auto=format&fit=crop"
             alt="Sri Lanka Real Estate"
-            className="w-full h-full object-cover opacity-60"
+            className="w-full h-full object-cover opacity-40"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent" />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
@@ -41,7 +41,7 @@ export default function Home() {
                animate={{ opacity: 1, y: 0 }}
                className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter mb-4"
              >
-                Sri Lanka Property <span className="text-brand-green">Search</span>
+                Sri Lanka <span className="text-brand-orange">Property</span> <span className="text-brand-green">Search</span>
              </motion.h1>
           </div>
 
@@ -90,7 +90,7 @@ export default function Home() {
                </div>
                
                <div className="flex items-center space-x-4 w-full md:w-auto">
-                 <button className="flex-1 md:flex-none border-2 border-slate-900 text-slate-900 px-8 py-4 rounded-xl font-black uppercase text-xs tracking-widest hover:bg-slate-900 hover:text-white transition-all">
+                 <button className="flex-1 md:flex-none border-2 border-brand-dark text-brand-dark px-8 py-4 rounded-xl font-black uppercase text-xs tracking-widest hover:bg-brand-dark hover:text-white transition-all">
                     Advance Search
                  </button>
                  <button className="flex-1 md:flex-none bg-brand-green text-white px-12 py-4 rounded-xl font-black uppercase text-xs tracking-widest shadow-xl shadow-brand-green/20 hover:scale-105 active:scale-95 transition-all">
@@ -121,7 +121,7 @@ export default function Home() {
                className="group relative h-64 rounded-2xl overflow-hidden border border-slate-200 cursor-pointer shadow-sm hover:shadow-xl transition-all"
              >
                <img src={cat.img} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" referrerPolicy="no-referrer" />
-               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent" />
+               <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/90 to-transparent" />
                <div className="absolute inset-0 p-6 flex flex-col justify-end">
                   <h3 className="text-white font-black uppercase text-xs tracking-widest mb-4 border-b border-white/20 pb-2">{cat.name}</h3>
                   <div className="grid grid-cols-2 gap-2 opacity-0 group-hover:opacity-100 transition-all translate-y-4 group-hover:translate-y-0">
@@ -215,7 +215,7 @@ export default function Home() {
       </section>
 
       {/* Why Us Section */}
-      <section className="bg-slate-900 py-24 text-white overflow-hidden relative">
+      <section className="bg-brand-dark py-24 text-white overflow-hidden relative">
         <div className="absolute top-0 right-0 w-1/3 h-full bg-brand-green/5 blur-3xl rounded-full translate-x-1/2" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -292,7 +292,12 @@ export default function Home() {
                     "Sri Lanka's No.1 source of updated properties."
                   </h2>
                   <div className="space-y-4">
-                    <p className="text-brand-orange font-black uppercase text-sm tracking-[0.3em]">LankaLand.lk</p>
+                    <p className="font-black uppercase text-sm tracking-[0.3em] flex items-center justify-center">
+                      <span className="text-brand-green">Lanka</span>
+                      <span className="text-brand-red">l</span>
+                      <span className="text-brand-orange">and</span>
+                      <span className="text-brand-blue">.lk</span>
+                    </p>
                     <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-6">
                       <Link to="/contact" className="bg-white text-brand-dark px-8 py-3 rounded-xl font-black uppercase text-[10px] tracking-widest hover:bg-slate-100 transition-all w-full md:w-auto">
                         Valuation

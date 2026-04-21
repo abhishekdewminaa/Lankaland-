@@ -30,7 +30,7 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
       {/* Top bar header */}
       <div className={cn(
-        "bg-slate-900 overflow-hidden transition-all duration-300 border-b border-white/10",
+        "bg-brand-dark overflow-hidden transition-all duration-300 border-b border-white/10",
         scrolled ? "h-0" : "h-10"
       )}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex justify-end items-center space-x-6 text-[11px] font-bold text-slate-400 uppercase tracking-wider">

@@ -1,8 +1,12 @@
 import React from 'react';
-import { Mail, Phone, MapPin, Send, MessageSquare, Clock, Globe } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, MessageCircle } from 'lucide-react';
 import { motion } from 'motion/react';
+import { cn } from '../lib/utils';
+import { CONTACT_INFO } from '../constants';
 
 export default function Contact() {
+  const whatsappUrl = `https://wa.me/${CONTACT_INFO.whatsapp}?text=${encodeURIComponent('Hi LankaLand, I have an inquiry about properties.')}`;
+
   return (
     <div className="bg-slate-50 min-h-screen">
       {/* Header */}
@@ -26,20 +30,36 @@ export default function Contact() {
             <ContactDetailCard
               icon={<Phone className="text-brand-green" />}
               title="Call Us Anytime"
-              detail="+94 11 234 5678"
-              sub="Mon-Sat: 8am - 6pm"
+              detail={CONTACT_INFO.phone}
+              sub={CONTACT_INFO.phoneAlt}
             />
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="block outline-none focus:ring-2 focus:ring-[#25D366] rounded-3xl group/wa">
+              <ContactDetailCard
+                icon={
+                  <motion.div
+                    animate={{ y: [0, -4, 0] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    <MessageCircle className="text-[#25D366]" />
+                  </motion.div>
+                }
+                title="WhatsApp Chat"
+                detail="Quick Response"
+                sub="Available 8am - 10pm"
+                highlightColor="border-[#25D366] hover:bg-[#25D366]/5"
+              />
+            </a>
             <ContactDetailCard
               icon={<Mail className="text-brand-orange" />}
               title="Email Us"
-              detail="info@lankaland.lk"
+              detail={CONTACT_INFO.email}
               sub="Online 24/7"
             />
             <ContactDetailCard
               icon={<MapPin className="text-brand-red" />}
               title="Visit Headquarters"
-              detail="123 Colombo Road, Kotte"
-              sub="Sri Lanka"
+              detail="Kadawatha Office"
+              sub={CONTACT_INFO.address}
             />
           </div>
 
@@ -116,11 +136,14 @@ export default function Contact() {
   );
 }
 
-function ContactDetailCard({ icon, title, detail, sub }: { icon: React.ReactNode, title: string, detail: string, sub: string }) {
+function ContactDetailCard({ icon, title, detail, sub, highlightColor }: { icon: React.ReactNode, title: string, detail: string, sub: string, highlightColor?: string }) {
   return (
     <motion.div
       whileHover={{ scale: 1.02 }}
-      className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 flex items-start space-x-6"
+      className={cn(
+        "bg-white p-8 rounded-3xl shadow-sm border border-slate-100 flex items-start space-x-6 h-full transition-colors",
+        highlightColor
+      )}
     >
       <div className="w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center shrink-0">
         {icon}
