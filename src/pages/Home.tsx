@@ -337,14 +337,44 @@ export default function Home() {
                  <p className="text-[9px] font-bold uppercase opacity-60">LKR / USD • 21 Apr 2026</p>
               </div>
 
-              <Link to="/calculator" className="block bg-white rounded-[2rem] p-8 border border-slate-200 shadow-sm relative overflow-hidden group hover:border-brand-green transition-all">
-                 <div className="absolute -right-4 -bottom-4 text-slate-100 group-hover:text-brand-green/10 transition-colors duration-500">
-                   <Calculator size={100} />
-                 </div>
-                 <h3 className="text-brand-dark font-black uppercase text-xs tracking-widest mb-3 relative z-10">Mortgage Tool</h3>
-                 <p className="text-2xl font-black text-slate-900 leading-tight relative z-10 mb-2">Calculate <span className="text-brand-green">Loans</span></p>
-                 <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest relative z-10">Estimate monthly payments instantly →</p>
-              </Link>
+              <motion.div
+                initial={{ perspective: 1000 }}
+                whileHover={{ rotateY: 7, rotateX: -7, scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="relative"
+              >
+                <Link to="/calculator" className="block bg-brand-dark rounded-[2rem] p-8 text-white relative overflow-hidden group shadow-xl">
+                   {/* Animated Background Gradients */}
+                   <motion.div 
+                     animate={{ 
+                       scale: [1, 1.3, 1],
+                       rotate: [0, 90, 0]
+                     }}
+                     transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+                     className="absolute -right-4 -bottom-4 w-48 h-48 bg-brand-green/20 rounded-full blur-3xl" 
+                   />
+                   <motion.div 
+                     animate={{ 
+                       scale: [1, 1.2, 1],
+                       x: [0, -20, 0]
+                     }}
+                     transition={{ duration: 10, repeat: Infinity, ease: "linear", delay: 2 }}
+                     className="absolute -left-4 -top-4 w-40 h-40 bg-brand-blue/20 rounded-full blur-3xl transition-colors group-hover:bg-brand-orange/30" 
+                   />
+                   
+                   <div className="relative z-10">
+                     <motion.div
+                       animate={{ y: [0, -8, 0] }}
+                       transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                     >
+                       <Calculator className="text-brand-green mb-6 filter drop-shadow-lg" size={48} />
+                     </motion.div>
+                     <h3 className="font-proxima font-black uppercase text-xs tracking-widest mb-3 border-b border-white/10 pb-2">Mortgage Tool</h3>
+                     <p className="text-3xl font-proxima font-black leading-tight mb-2">Calculate <span className="text-brand-green italic">Loans</span></p>
+                     <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest group-hover:text-brand-orange transition-colors">Estimate monthly payments instantly →</p>
+                   </div>
+                </Link>
+              </motion.div>
            </div>
         </div>
       </section>

@@ -85,7 +85,7 @@ export default function PropertyDetails() {
                <div className="absolute top-0 right-0 w-64 h-full bg-black/5 -skew-x-12 translate-x-32" />
                <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
                   <div className="space-y-1">
-                    <h1 className="text-2xl md:text-3xl font-serif font-black leading-tight">
+                    <h1 className="text-2xl md:text-3xl font-proxima font-black leading-tight">
                       {property.title}
                     </h1>
                     <div className="flex items-center space-x-4 text-xs font-bold uppercase tracking-widest text-white/80">
@@ -103,7 +103,7 @@ export default function PropertyDetails() {
             <div className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 flex flex-col md:flex-row items-center justify-between gap-6">
                <div className="space-y-1 text-center md:text-left">
                   <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Asking Price</span>
-                  <div className="text-4xl font-serif font-black text-brand-dark">{formattedPrice}</div>
+                  <div className="text-4xl font-proxima font-black text-brand-dark">{formattedPrice}</div>
                   {property.pricePerUnit && <div className="text-sm font-bold text-brand-red italic">{property.pricePerUnit}</div>}
                </div>
                <div className="flex items-center gap-4">
@@ -120,7 +120,7 @@ export default function PropertyDetails() {
             {/* Description Section */}
             <div className="space-y-6">
               <div className="flex items-center space-x-4 border-b border-slate-200 pb-4">
-                <h2 className="text-xl font-serif font-black text-slate-900 uppercase tracking-tighter">Property Description</h2>
+                <h2 className="text-xl font-proxima font-black text-slate-900 uppercase tracking-tighter">Property Description</h2>
                 <div className="flex-grow h-0.5 bg-slate-100" />
               </div>
               <div className="bg-white p-8 md:p-12 rounded-[2.5rem] shadow-sm border border-slate-100 space-y-8">
@@ -142,7 +142,7 @@ export default function PropertyDetails() {
             {/* Property Overview Grid */}
             <div className="space-y-6">
               <div className="flex items-center space-x-4 border-b border-slate-200 pb-4">
-                <h2 className="text-xl font-serif font-black text-slate-900 uppercase tracking-tighter">Property Overview</h2>
+                <h2 className="text-xl font-proxima font-black text-slate-900 uppercase tracking-tighter">Property Overview</h2>
                 <div className="flex-grow h-0.5 bg-slate-100" />
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-slate-200 border border-slate-200 rounded-3xl overflow-hidden shadow-sm">
@@ -172,7 +172,7 @@ export default function PropertyDetails() {
             {(property.locationHighlights || property.propertyHighlights) && (
               <div className="space-y-6">
                 <div className="flex items-center space-x-4 border-b border-slate-200 pb-4">
-                  <h2 className="text-xl font-serif font-black text-slate-900 uppercase tracking-tighter">Additional Information</h2>
+                  <h2 className="text-xl font-proxima font-black text-slate-900 uppercase tracking-tighter">Additional Information</h2>
                   <div className="flex-grow h-0.5 bg-slate-100" />
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -211,7 +211,7 @@ export default function PropertyDetails() {
             {/* Contact Seller Section */}
             <div className="space-y-6">
               <div className="flex items-center space-x-4 border-b border-slate-200 pb-4">
-                <h2 className="text-xl font-serif font-black text-slate-900 uppercase tracking-tighter">Contact Details</h2>
+                <h2 className="text-xl font-proxima font-black text-slate-900 uppercase tracking-tighter">Contact Details</h2>
                 <div className="flex-grow h-0.5 bg-slate-100" />
               </div>
               <div className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
@@ -257,7 +257,7 @@ export default function PropertyDetails() {
             {/* Image Gallery */}
             <div className="space-y-6">
               <div className="flex items-center space-x-4 border-b border-slate-200 pb-4">
-                <h2 className="text-xl font-serif font-black text-slate-900 uppercase tracking-tighter">Image Gallery</h2>
+                <h2 className="text-xl font-proxima font-black text-slate-900 uppercase tracking-tighter">Image Gallery</h2>
                 <div className="flex-grow h-0.5 bg-slate-100" />
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -307,15 +307,59 @@ export default function PropertyDetails() {
             </div>
 
             {/* Mortgage Calculator Shortcut */}
-            <Link to="/calculator" className="block bg-brand-dark rounded-3xl p-8 text-white relative overflow-hidden group">
-               <div className="absolute top-0 right-0 w-32 h-32 bg-brand-green/10 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700" />
-               <Calculator className="text-brand-green mb-6" size={40} />
-               <h3 className="text-2xl font-serif font-black leading-tight mb-2">Plan Your <br/><span className="text-brand-green italic">Budget</span></h3>
-               <p className="text-sm text-slate-400 font-bold mb-6 italic">Estimate your monthly installments with our professional tool.</p>
-               <span className="inline-flex items-center text-xs font-black uppercase tracking-widest group-hover:translate-x-2 transition-transform">
-                 Go to Calculator <ChevronRight size={14} className="ml-2" />
-               </span>
-            </Link>
+            <motion.div
+              initial={{ perspective: 1000 }}
+              whileHover={{ rotateY: 5, rotateX: -5, scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className="relative"
+            >
+              <Link to="/calculator" className="block bg-brand-dark rounded-3xl p-8 text-white relative overflow-hidden group shadow-2xl">
+                {/* Animated Background Gradients */}
+                <motion.div 
+                  animate={{ 
+                    scale: [1, 1.2, 1],
+                    x: [0, 20, 0],
+                    y: [0, -20, 0]
+                  }}
+                  transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                  className="absolute top-0 right-0 w-64 h-64 bg-brand-green/20 rounded-full blur-3xl -mr-32 -mt-32" 
+                />
+                <motion.div 
+                   animate={{ 
+                    scale: [1, 1.5, 1],
+                    x: [0, -30, 0],
+                    y: [0, 30, 0]
+                  }}
+                  transition={{ duration: 10, repeat: Infinity, ease: "linear", delay: 1 }}
+                  className="absolute bottom-0 left-0 w-48 h-48 bg-brand-orange/20 rounded-full blur-3xl -ml-24 -mb-24" 
+                />
+                <motion.div 
+                   animate={{ 
+                    scale: [1, 1.3, 1],
+                    opacity: [0.3, 0.6, 0.3]
+                  }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "linear", delay: 2 }}
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-brand-blue/20 rounded-full blur-3xl" 
+                />
+
+                <div className="relative z-10">
+                  <motion.div
+                    animate={{ 
+                      y: [0, -5, 0],
+                      scale: [1, 1.1, 1]
+                    }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    <Calculator className="text-brand-green mb-6 filter drop-shadow-lg" size={48} />
+                  </motion.div>
+                  <h3 className="text-2xl font-proxima font-black leading-tight mb-2">Plan Your <br/><span className="text-brand-green italic">Budget</span></h3>
+                  <p className="text-sm text-slate-400 font-bold mb-6 italic">Estimate your monthly installments with our professional tool.</p>
+                  <span className="inline-flex items-center text-xs font-black uppercase tracking-[0.2em] group-hover:text-brand-orange transition-colors">
+                    Go to Calculator <ChevronRight size={14} className="ml-2 group-hover:translate-x-2 transition-transform" />
+                  </span>
+                </div>
+              </Link>
+            </motion.div>
 
             {/* Professional Directory Links */}
             <div className="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden">
@@ -367,7 +411,7 @@ export default function PropertyDetails() {
         {/* Similar Properties Section */}
         <section className="mt-24 space-y-12">
            <div className="flex items-center space-x-4 border-b border-slate-200 pb-6">
-              <h2 className="text-3xl font-serif font-black text-slate-900 uppercase tracking-tighter">Similar <span className="text-brand-blue italic">Properties</span></h2>
+              <h2 className="text-3xl font-proxima font-black text-slate-900 uppercase tracking-tighter">Similar <span className="text-brand-blue italic">Properties</span></h2>
               <div className="flex-grow h-1 bg-slate-100 rounded-full" />
               <Link to="/properties" className="text-xs font-black uppercase tracking-widest text-brand-green hover:underline">View All</Link>
            </div>
