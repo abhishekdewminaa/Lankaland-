@@ -3,6 +3,7 @@ import { Search, Filter, SlidersHorizontal, MapPin } from 'lucide-react';
 import { motion } from 'motion/react';
 import { FEATURED_PROPERTIES } from '../constants';
 import PropertyCard from '../components/PropertyCard';
+import PropertyComparison from '../components/PropertyComparison';
 
 export default function Listings() {
   const [filter, setFilter] = useState('All');
@@ -120,6 +121,8 @@ export default function Listings() {
           </main>
         </div>
       </div>
+
+      <PropertyComparison />
     </div>
   );
 }
