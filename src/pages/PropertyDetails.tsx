@@ -102,12 +102,12 @@ export default function PropertyDetails() {
             {/* Price Banner */}
             <div className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 flex flex-col md:flex-row items-center justify-between gap-6">
                <div className="space-y-1 text-center md:text-left">
-                  <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Asking Price</span>
+                  <span className="text-[10px] font-proxima font-black uppercase tracking-[0.2em] text-slate-400">Asking Price</span>
                   <div className="text-4xl font-proxima font-black text-brand-dark">{formattedPrice}</div>
                   {property.pricePerUnit && <div className="text-sm font-bold text-brand-red italic">{property.pricePerUnit}</div>}
                </div>
                <div className="flex items-center gap-4">
-                  <button onClick={() => setIsModalOpen(true)} className="bg-brand-dark text-white px-8 py-4 rounded-xl font-black uppercase text-[10px] tracking-widest hover:bg-slate-800 transition-all shadow-xl shadow-brand-dark/20 flex items-center gap-2">
+                  <button onClick={() => setIsModalOpen(true)} className="bg-brand-dark text-white px-8 py-4 rounded-xl font-proxima font-black uppercase text-[10px] tracking-widest hover:bg-slate-800 transition-all shadow-xl shadow-brand-dark/20 flex items-center gap-2">
                     <Calendar size={14} />
                     Schedule Viewing
                   </button>
@@ -155,11 +155,11 @@ export default function PropertyDetails() {
                   { label: 'Property Status', value: property.status, highlight: true },
                 ].map((item, i) => (
                   <div key={i} className="bg-white p-6 flex justify-between items-center group hover:bg-slate-50 transition-colors">
-                    <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">{item.label}</span>
+                    <span className="text-[10px] font-proxima font-black uppercase tracking-widest text-slate-400">{item.label}</span>
                     <div className="flex items-center space-x-2">
-                       {item.icon}
+                       {item.icon && React.cloneElement(item.icon as React.ReactElement, { size: 16, className: 'text-brand-dark opacity-50' })}
                        <span className={cn(
-                         "font-bold text-slate-900",
+                         "font-proxima font-black text-slate-900",
                          item.highlight && "text-brand-green"
                        )}>{item.value}</span>
                     </div>
@@ -222,24 +222,24 @@ export default function PropertyDetails() {
                         {property.seller?.name.charAt(0)}
                       </div>
                       <div>
-                        <h4 className="text-[10px] font-black uppercase tracking-widest text-slate-400">Seller Name</h4>
+                        <h4 className="text-[10px] font-proxima font-black uppercase tracking-widest text-slate-400">Seller Name</h4>
                         <p className="text-xl font-bold text-brand-dark">{property.seller?.name || 'LankaLand Agent'}</p>
                       </div>
                     </div>
                     <div className="grid grid-cols-2 gap-4 pt-4">
                        <div>
-                          <h4 className="text-[10px] font-black uppercase tracking-widest text-slate-400">Seller Type</h4>
+                          <h4 className="text-[10px] font-proxima font-black uppercase tracking-widest text-slate-400">Seller Type</h4>
                           <p className="font-bold">{property.seller?.type || 'Professional Agent'}</p>
                        </div>
                        <div>
-                          <h4 className="text-[10px] font-black uppercase tracking-widest text-slate-400">Mobile</h4>
+                          <h4 className="text-[10px] font-proxima font-black uppercase tracking-widest text-slate-400">Mobile</h4>
                           <p className="font-bold text-brand-red">{property.seller?.phone || CONTACT_INFO.phone}</p>
                        </div>
                     </div>
                   </div>
                   <div className="flex flex-col gap-4">
                     <div className="flex items-center gap-2">
-                       <button onClick={() => navigate('/contact', { state: { property } })} className="flex-grow bg-brand-blue text-white py-4 rounded-xl font-black uppercase text-[10px] tracking-widest hover:bg-brand-blue/90 transition-all flex items-center justify-center gap-2">
+                       <button onClick={() => navigate('/contact', { state: { property } })} className="flex-grow bg-brand-blue text-white py-4 rounded-xl font-proxima font-black uppercase text-[10px] tracking-widest hover:bg-brand-blue/90 transition-all flex items-center justify-center gap-2">
                           <Mail size={14} /> Inquire Now
                        </button>
                     </div>

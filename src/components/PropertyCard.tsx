@@ -74,7 +74,7 @@ export default function PropertyCard({ property, className, distance }: Property
         </button>
 
         <div className="absolute bottom-4 left-4">
-          <span className="bg-white/90 backdrop-blur-md text-brand-dark px-4 py-2 rounded-lg text-lg font-bold shadow-sm">
+          <span className="bg-white/90 backdrop-blur-md text-brand-dark px-4 py-2 rounded-lg text-lg font-proxima font-black shadow-sm">
             {formattedPrice}
           </span>
         </div>
@@ -100,30 +100,30 @@ export default function PropertyCard({ property, className, distance }: Property
         <div className="mt-auto">
           {/* Stats - Visually Enhanced */}
           <div className="grid grid-cols-3 gap-0 border-y border-slate-100 mb-6 -mx-6 bg-slate-50/50">
-            <div className="flex flex-col items-center justify-center p-3 border-r border-slate-100">
-              <Maximize size={16} className="text-brand-green mb-1" />
-              <span className="text-[10px] uppercase tracking-wider text-slate-400 font-bold mb-0.5">Size</span>
-              <span className="text-xs font-bold text-slate-900 leading-none">
+            <div className="flex flex-col items-center justify-center p-4 border-r border-slate-100 group/stat">
+              <Maximize size={18} className="text-brand-green mb-1.5 group-hover/stat:scale-110 transition-transform" />
+              <span className="text-[10px] font-proxima font-black uppercase tracking-widest text-slate-400 mb-1">Size</span>
+              <span className="text-sm font-proxima font-black text-slate-900 leading-none">
                 {property.size} {property.unit}
               </span>
             </div>
-            <div className="flex flex-col items-center justify-center p-3 border-r border-slate-100">
-              <BedDouble size={16} className="text-brand-red mb-1" />
-              <span className="text-[10px] uppercase tracking-wider text-slate-400 font-bold mb-0.5">Beds</span>
-              <span className="text-xs font-bold text-slate-900 leading-none">{property.bedrooms || '-'}</span>
+            <div className="flex flex-col items-center justify-center p-4 border-r border-slate-100 group/stat">
+              <BedDouble size={18} className="text-brand-red mb-1.5 group-hover/stat:scale-110 transition-transform" />
+              <span className="text-[10px] font-proxima font-black uppercase tracking-widest text-slate-400 mb-1">Beds</span>
+              <span className="text-sm font-proxima font-black text-slate-900 leading-none">{property.bedrooms || '-'}</span>
             </div>
-            <div className="flex flex-col items-center justify-center p-3">
-              <Bath size={16} className="text-brand-blue mb-1" />
-              <span className="text-[10px] uppercase tracking-wider text-slate-400 font-bold mb-0.5">Baths</span>
-              <span className="text-xs font-bold text-slate-900 leading-none">{property.bathrooms || '-'}</span>
+            <div className="flex flex-col items-center justify-center p-4 group/stat">
+              <Bath size={18} className="text-brand-blue mb-1.5 group-hover/stat:scale-110 transition-transform" />
+              <span className="text-[10px] font-proxima font-black uppercase tracking-widest text-slate-400 mb-1">Baths</span>
+              <span className="text-sm font-proxima font-black text-slate-900 leading-none">{property.bathrooms || '-'}</span>
             </div>
           </div>
 
           <div className="flex gap-2">
-            <button 
-              onClick={() => setIsModalOpen(true)}
-              className="flex-1 flex items-center justify-center space-x-2 bg-slate-900 text-white py-3 rounded-xl transition-all font-black uppercase text-[10px] tracking-widest hover:bg-slate-800 group/view"
-            >
+              <button 
+                onClick={() => setIsModalOpen(true)}
+                className="flex-1 flex items-center justify-center space-x-2 bg-slate-900 text-white py-3 rounded-xl transition-all font-proxima font-black uppercase text-[10px] tracking-widest hover:bg-slate-800 group/view"
+              >
               <Calendar size={14} />
               <span>Schedule Viewing</span>
             </button>
@@ -149,7 +149,7 @@ export default function PropertyCard({ property, className, distance }: Property
           </div>
           <Link 
             to={`/properties/${property.id}`}
-            className="w-full flex items-center justify-center space-x-2 bg-brand-green text-white py-3 rounded-xl transition-all font-black uppercase text-[10px] tracking-widest shadow-lg shadow-brand-green/20 hover:bg-brand-dark hover:shadow-brand-dark/20 mt-2 group/btn"
+            className="w-full flex items-center justify-center space-x-2 bg-brand-green text-white py-3 rounded-xl transition-all font-proxima font-black uppercase text-[10px] tracking-widest shadow-lg shadow-brand-green/20 hover:bg-brand-dark hover:shadow-brand-dark/20 mt-2 group/btn"
           >
             <span>More Details</span>
             <ArrowRight size={14} className="transition-transform group-hover/btn:translate-x-1" />
