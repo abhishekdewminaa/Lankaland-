@@ -186,7 +186,7 @@ export default function Home() {
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
           <div className="space-y-2">
             <h2 className="text-brand-dark font-semibold uppercase tracking-[0.2em] text-sm">Our Portfolio</h2>
-            <h3 className="font-serif text-4xl md:text-5xl font-bold text-slate-900">Featured Properties</h3>
+            <h3 className="font-proxima text-4xl md:text-5xl font-black text-slate-900">Featured Properties</h3>
           </div>
           <Link to="/properties" className="group flex items-center text-brand-green font-bold text-lg">
             View All Properties
@@ -222,7 +222,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
             <h2 className="text-brand-orange font-semibold uppercase tracking-[0.2em] text-sm italic">The LankaLand Advantage</h2>
-            <h3 className="font-serif text-4xl md:text-6xl font-bold">Why Choose Sri Lanka's Best Real Estate Service?</h3>
+            <h3 className="font-proxima text-4xl md:text-6xl font-black">Why Choose Sri Lanka's Best Real Estate Service?</h3>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 text-center">
@@ -289,7 +289,7 @@ export default function Home() {
                   className="relative z-10 max-w-4xl mx-auto"
                 >
                   <PhilippinePeso className="text-brand-orange mx-auto mb-6" size={48} />
-                  <h2 className="font-serif text-2xl md:text-4xl font-bold text-white leading-tight mb-8">
+                  <h2 className="font-proxima text-2xl md:text-4xl font-black text-white leading-tight mb-8">
                     "Sri Lanka's No.1 source of updated properties."
                   </h2>
                   <div className="space-y-4">

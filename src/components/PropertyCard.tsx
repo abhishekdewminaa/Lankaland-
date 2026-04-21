@@ -93,7 +93,7 @@ export default function PropertyCard({ property, className, distance }: Property
             </span>
           )}
         </div>
-        <h3 className="font-serif text-xl font-bold text-slate-900 mb-4 line-clamp-1 group-hover:text-brand-green transition-colors">
+        <h3 className="font-proxima text-xl font-black text-slate-900 mb-4 line-clamp-1 group-hover:text-brand-green transition-colors">
           {property.title}
         </h3>
 

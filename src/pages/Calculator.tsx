@@ -52,7 +52,7 @@ export default function CalculatorPage() {
             animate={{ opacity: 1, scale: 1 }}
             className="space-y-4"
           >
-            <h1 className="font-serif text-5xl text-white font-bold">Mortgage Calculator</h1>
+            <h1 className="font-proxima text-5xl text-white font-black uppercase tracking-tighter">Mortgage Calculator</h1>
             <p className="text-xl text-brand-green font-medium">Plan your future home with confidence.</p>
           </motion.div>
         </div>
@@ -148,7 +148,7 @@ export default function CalculatorPage() {
               <div className="relative z-10 space-y-6 text-center lg:text-left">
                 <div className="space-y-1">
                   <p className="text-slate-400 text-sm font-bold uppercase tracking-widest">Monthly Installment</p>
-                  <h2 className="text-4xl sm:text-5xl font-bold font-serif text-brand-green">
+                  <h2 className="text-4xl sm:text-5xl font-black font-proxima text-brand-green tabular-nums">
                     {formatLKR(monthlyPayment)}
                   </h2>
                 </div>

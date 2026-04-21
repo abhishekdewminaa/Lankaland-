@@ -96,7 +96,7 @@ export default function Services() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <h1 className="font-serif text-5xl md:text-7xl text-white font-bold">Our Services</h1>
+             <h1 className="font-proxima text-5xl md:text-7xl text-white font-black uppercase tracking-tighter">Our Services</h1>
             <p className="text-xl text-slate-300 font-medium mt-4 max-w-2xl mx-auto italic">
               "Providing Fast, Accurate & Best Price Solutions for All Your Real Estate Needs."
             </p>
@@ -119,7 +119,7 @@ export default function Services() {
               <div className="mx-auto w-20 h-20 bg-slate-50 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-110 group-hover:rotate-3">
                 {service.icon}
               </div>
-              <h3 className="text-2xl font-serif font-bold text-slate-900">{service.title}</h3>
+              <h3 className="text-2xl font-proxima font-black text-slate-900 uppercase tracking-tighter">{service.title}</h3>
               <p className="text-slate-500 leading-relaxed">
                 {service.desc}
               </p>
@@ -135,7 +135,7 @@ export default function Services() {
             {/* Input Form */}
             <div className="p-12 md:p-16 space-y-8">
               <div className="space-y-4">
-                <h2 className="text-3xl font-serif font-bold text-slate-900 flex items-center gap-3">
+                <h2 className="text-3xl font-proxima font-black text-slate-900 flex items-center gap-3 uppercase tracking-tighter">
                   <Calculator className="text-brand-green" />
                   Mortgage Calculator
                 </h2>
@@ -200,7 +200,7 @@ export default function Services() {
               
               <div className="space-y-2 relative z-10">
                 <span className="text-brand-green font-bold uppercase tracking-[0.2em] text-sm">Estimated Monthly Payment</span>
-                <div className="text-5xl md:text-6xl font-serif font-black text-white">
+                <div className="text-5xl md:text-6xl font-proxima font-black text-white tabular-nums">
                   {formattedPayment}
                 </div>
               </div>
@@ -243,7 +243,7 @@ export default function Services() {
         <div className="bg-brand-green rounded-[3rem] p-12 md:p-20 text-center text-white relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-full bg-black/10 z-0" />
           <div className="relative z-10 space-y-8">
-            <h2 className="text-3xl md:text-5xl font-serif font-bold max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-5xl font-proxima font-black max-w-3xl mx-auto uppercase tracking-tighter">
               Need a Custom Real Estate Solution?
             </h2>
             <p className="text-xl text-white/80 max-w-2xl mx-auto">

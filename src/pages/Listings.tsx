@@ -77,7 +77,7 @@ export default function Listings() {
       <section className="bg-brand-dark py-20 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-brand-green/20 blur-3xl rounded-full" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <h1 className="font-serif text-4xl md:text-6xl text-white font-bold mb-6 text-center">Available Properties</h1>
+          <h1 className="font-proxima text-4xl md:text-6xl text-white font-black mb-6 text-center">Available Properties</h1>
           <p className="text-slate-300 text-center max-w-2xl mx-auto text-lg mb-12">
             Discover a wide range of hand-picked properties across Sri Lanka. From prime lands to luxury apartments, find your perfect match.
           </p>

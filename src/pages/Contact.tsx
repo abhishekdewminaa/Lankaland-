@@ -45,7 +45,7 @@ export default function Contact() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
           >
-            <h1 className="font-serif text-5xl md:text-7xl text-white font-bold">Get In Touch</h1>
+            <h1 className="font-proxima text-5xl md:text-7xl text-white font-black uppercase tracking-tighter">Get In Touch</h1>
             <p className="text-xl text-brand-orange font-medium mt-4">Sri Lanka's Best Real Estate Service is just a message away.</p>
           </motion.div>
         </div>
@@ -137,14 +137,14 @@ export default function Contact() {
                   >
                     <CheckCircle size={40} />
                   </motion.div>
-                  <h3 className="text-3xl font-serif font-bold text-slate-900 mb-2">Message Sent!</h3>
+                  <h3 className="text-3xl font-proxima font-black text-slate-900 mb-2 uppercase tracking-tighter">Message Sent!</h3>
                   <p className="text-slate-500 max-w-sm">Thank you for your inquiry. One of our property experts will reach out to you shortly.</p>
                 </motion.div>
               )}
             </AnimatePresence>
 
             <div className="mb-10 space-y-2">
-              <h2 className="text-3xl font-serif font-bold text-slate-900">Send an Inquiry</h2>
+              <h2 className="text-3xl font-proxima font-black text-slate-900 uppercase tracking-tighter">Send an Inquiry</h2>
               <p className="text-slate-500">Our property experts will get back to you within 24 hours.</p>
             </div>
 
@@ -243,7 +243,7 @@ function ContactDetailCard({ icon, title, detail, sub, highlightColor }: { icon:
       </div>
       <div className="space-y-1">
         <h3 className="font-bold text-slate-900">{title}</h3>
-        <p className="text-xl font-serif font-bold text-slate-800">{detail}</p>
+        <p className="text-xl font-proxima font-black text-slate-800 tabular-nums">{detail}</p>
         <p className="text-sm text-slate-400">{sub}</p>
       </div>
     </motion.div>

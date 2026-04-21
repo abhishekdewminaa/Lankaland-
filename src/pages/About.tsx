@@ -20,7 +20,7 @@ export default function About() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <h1 className="font-serif text-5xl md:text-7xl text-white font-bold">Reshaping Real Estate</h1>
+            <h1 className="font-proxima text-5xl md:text-7xl text-white font-black uppercase tracking-tighter">Reshaping Real Estate</h1>
             <p className="text-xl text-slate-300 max-w-2xl mx-auto italic mt-4">
               "Sri Lanka's Best Real Estate Service - From the Heart of the Island."
             </p>
@@ -39,7 +39,7 @@ export default function About() {
           >
             <div className="space-y-4">
               <h2 className="text-brand-green font-bold uppercase tracking-widest text-sm">Our Story</h2>
-              <h3 className="font-serif text-4xl md:text-5xl font-bold text-slate-900 leading-tight">Expertise, Transparency, Integrity.</h3>
+              <h3 className="font-proxima text-4xl md:text-5xl font-black text-slate-900 leading-tight uppercase tracking-tighter">Expertise, Transparency, Integrity.</h3>
             </div>
             <div className="space-y-6 text-slate-600 text-lg leading-relaxed">
               <p>
@@ -89,7 +89,7 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 space-y-4">
             <h2 className="text-brand-red font-bold uppercase tracking-widest text-sm">How We Work</h2>
-            <h3 className="font-serif text-4xl md:text-5xl font-bold text-slate-900">Our Core Principles</h3>
+            <h3 className="font-proxima text-4xl md:text-5xl font-black text-slate-900 uppercase tracking-tighter">Our Core Principles</h3>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
@@ -118,7 +118,7 @@ export default function About() {
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-12">
         <div className="space-y-4">
           <h2 className="text-brand-blue font-bold uppercase tracking-widest text-sm">Where We Operate</h2>
-          <h3 className="font-serif text-4xl md:text-5xl font-bold text-slate-900">Covering All of Sri Lanka</h3>
+          <h3 className="font-proxima text-4xl md:text-5xl font-black text-slate-900 uppercase tracking-tighter">Covering All of Sri Lanka</h3>
         </div>
         <div className="relative group">
            <Map size={120} className="mx-auto text-slate-200 group-hover:text-brand-green/20 transition-all duration-700" />
