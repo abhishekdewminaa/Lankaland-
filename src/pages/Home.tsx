@@ -103,7 +103,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Category Grid Section - Authentic to original website layout but modern */}
+      {/* Category Grid Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
            {[
@@ -135,7 +135,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Advertisements Title matching original style */}
+      {/* Featured Advertisements Title */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
          <h2 className="text-slate-900 font-black uppercase text-3xl md:text-5xl tracking-tighter">
            Featured <span className="text-brand-blue italic">Advertisements</span>
@@ -143,7 +143,7 @@ export default function Home() {
          <div className="w-24 h-2 bg-brand-orange mx-auto mt-6 rounded-full" />
       </section>
 
-      {/* Professional Directory Section - Modern take on the original's list */}
+      {/* Professional Directory Section */}
       <section className="bg-slate-100 py-24 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
@@ -316,20 +316,16 @@ export default function Home() {
               <div className="bg-white rounded-[2rem] p-8 border border-slate-200 shadow-sm">
                  <h3 className="text-brand-dark font-black uppercase text-xs tracking-widest mb-6 border-b border-slate-100 pb-3">Latest Ads</h3>
                  <div className="space-y-4">
-                    {[
-                      { t: "Prime Land in Galle", p: "2.5M" },
-                      { t: "Luxury Apt Colombo", p: "45M" },
-                      { t: "Hillside Kandy Plot", p: "1.2M" }
-                    ].map((ad, i) => (
-                      <div key={i} className="flex items-center space-x-3 group cursor-pointer">
+                    {FEATURED_PROPERTIES.slice(0, 3).map((ad, i) => (
+                      <Link key={i} to={`/properties/${ad.id}`} className="flex items-center space-x-3 group cursor-pointer">
                          <div className="w-12 h-12 rounded-lg bg-slate-100 overflow-hidden shrink-0">
-                           <img src="https://picsum.photos/seed/real/100/100" className="w-full h-full object-cover" />
+                           <img src={ad.imageUrl} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                          </div>
                          <div>
-                            <p className="text-[10px] font-black uppercase text-slate-800 group-hover:text-brand-green transition-colors">{ad.t}</p>
-                            <p className="text-[10px] font-bold text-brand-red">{ad.p}</p>
+                            <p className="text-[10px] font-black uppercase text-slate-800 group-hover:text-brand-green transition-colors line-clamp-1">{ad.title}</p>
+                            <p className="text-[10px] font-bold text-brand-red">LKR {ad.price.toLocaleString()}</p>
                          </div>
-                      </div>
+                      </Link>
                     ))}
                  </div>
               </div>

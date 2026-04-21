@@ -1,10 +1,38 @@
-import React from 'react';
-import { Mail, Phone, MapPin, Send, MessageCircle } from 'lucide-react';
-import { motion } from 'motion/react';
+import React, { useState, useEffect } from 'react';
+import { Mail, Phone, MapPin, Send, MessageCircle, CheckCircle } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import { useLocation } from 'react-router-dom';
 import { cn } from '../lib/utils';
 import { CONTACT_INFO } from '../constants';
 
 export default function Contact() {
+  const location = useLocation();
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    type: 'Select Type',
+    message: ''
+  });
+
+  useEffect(() => {
+    // If we arrived with a property in state, pre-fill the message
+    if (location.state?.property) {
+      const { title, location: propLoc } = location.state.property;
+      setFormData(prev => ({
+        ...prev,
+        message: `Hi, I'm interested in viewing the property: "${title}" located in ${propLoc}. Please let me know when it would be possible to visit.`
+      }));
+    }
+  }, [location.state]);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitted(true);
+    setTimeout(() => setIsSubmitted(false), 5000);
+  };
+
   const whatsappUrl = `https://wa.me/${CONTACT_INFO.whatsapp}?text=${encodeURIComponent('Hi LankaLand, I have an inquiry about properties.')}`;
 
   return (
@@ -92,28 +120,55 @@ export default function Contact() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="lg:col-span-2 bg-white rounded-[2.5rem] shadow-xl p-8 md:p-12 border border-slate-100"
+            className="lg:col-span-2 bg-white rounded-[2.5rem] shadow-xl p-8 md:p-12 border border-slate-100 relative overflow-hidden"
           >
+            <AnimatePresence>
+              {isSubmitted && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  className="absolute inset-0 z-50 bg-white/90 backdrop-blur-sm flex flex-col items-center justify-center text-center p-8"
+                >
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    className="w-20 h-20 bg-brand-green/10 text-brand-green rounded-full flex items-center justify-center mb-6"
+                  >
+                    <CheckCircle size={40} />
+                  </motion.div>
+                  <h3 className="text-3xl font-serif font-bold text-slate-900 mb-2">Message Sent!</h3>
+                  <p className="text-slate-500 max-w-sm">Thank you for your inquiry. One of our property experts will reach out to you shortly.</p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
             <div className="mb-10 space-y-2">
               <h2 className="text-3xl font-serif font-bold text-slate-900">Send an Inquiry</h2>
               <p className="text-slate-500">Our property experts will get back to you within 24 hours.</p>
             </div>
 
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-sm font-bold text-slate-700 ml-1">Full Name</label>
                   <input
+                    required
                     type="text"
                     placeholder="Enter your name"
+                    value={formData.name}
+                    onChange={(e) => setFormData({...formData, name: e.target.value})}
                     className="w-full bg-slate-50 border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-brand-green outline-none transition-all placeholder:text-slate-300"
                   />
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-bold text-slate-700 ml-1">Email Address</label>
                   <input
+                    required
                     type="email"
                     placeholder="you@email.com"
+                    value={formData.email}
+                    onChange={(e) => setFormData({...formData, email: e.target.value})}
                     className="w-full bg-slate-50 border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-brand-green outline-none transition-all placeholder:text-slate-300"
                   />
                 </div>
@@ -123,14 +178,21 @@ export default function Contact() {
                 <div className="space-y-2">
                   <label className="text-sm font-bold text-slate-700 ml-1">Phone Number</label>
                   <input
+                    required
                     type="tel"
                     placeholder="+94 7X XXX XXXX"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
                     className="w-full bg-slate-50 border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-brand-green outline-none transition-all placeholder:text-slate-300"
                   />
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-bold text-slate-700 ml-1">Property Type</label>
-                  <select className="w-full bg-slate-50 border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-brand-green outline-none transition-all appearance-none text-slate-500">
+                  <select 
+                    value={formData.type}
+                    onChange={(e) => setFormData({...formData, type: e.target.value})}
+                    className="w-full bg-slate-50 border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-brand-green outline-none transition-all appearance-none text-slate-500"
+                  >
                     <option>Select Type</option>
                     <option>Land</option>
                     <option>House</option>
@@ -143,13 +205,19 @@ export default function Contact() {
               <div className="space-y-2">
                 <label className="text-sm font-bold text-slate-700 ml-1">How can we help?</label>
                 <textarea
+                  required
                   rows={5}
                   placeholder="Tell us about the property you are looking for..."
+                  value={formData.message}
+                  onChange={(e) => setFormData({...formData, message: e.target.value})}
                   className="w-full bg-slate-50 border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-brand-green outline-none transition-all placeholder:text-slate-300"
                 />
               </div>
 
-              <button className="flex items-center justify-center space-x-3 bg-brand-dark text-white px-10 py-5 rounded-2xl font-bold hover:bg-slate-800 transition-all w-full shadow-lg shadow-slate-900/10 group">
+              <button 
+                type="submit"
+                className="flex items-center justify-center space-x-3 bg-brand-dark text-white px-10 py-5 rounded-2xl font-bold hover:bg-slate-800 transition-all w-full shadow-lg shadow-slate-900/10 group"
+              >
                 <span>Submit Inquiry</span>
                 <Send size={18} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
               </button>

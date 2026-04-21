@@ -1,10 +1,12 @@
-import React from 'react';
-import { MapPin, Maximize, BedDouble, Bath, ArrowRight, TableProperties, MessageCircle } from 'lucide-react';
+import React, { useState } from 'react';
+import { MapPin, Maximize, BedDouble, Bath, ArrowRight, TableProperties, MessageCircle, Calendar } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Property } from '../types';
 import { cn } from '../lib/utils';
 import { motion } from 'motion/react';
 import { useComparison } from '../context/ComparisonContext';
 import { CONTACT_INFO } from '../constants';
+import ViewingModal from './ViewingModal';
 
 interface PropertyCardProps {
   property: Property;
@@ -14,6 +16,7 @@ interface PropertyCardProps {
 
 export default function PropertyCard({ property, className, distance }: PropertyCardProps) {
   const { isComparing, addToComparison, removeFromComparison } = useComparison();
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const comparing = isComparing(property.id);
 
   const formattedPrice = new Intl.NumberFormat('en-LK', {
@@ -117,9 +120,12 @@ export default function PropertyCard({ property, className, distance }: Property
           </div>
 
           <div className="flex gap-2">
-            <button className="flex-1 flex items-center justify-center space-x-2 bg-brand-green text-white py-3 rounded-xl transition-all font-black uppercase text-[10px] tracking-widest shadow-lg shadow-brand-green/20 hover:bg-brand-dark hover:shadow-brand-dark/20 group/btn">
-              <span>More Details</span>
-              <ArrowRight size={14} className="transition-transform group-hover/btn:translate-x-1" />
+            <button 
+              onClick={() => setIsModalOpen(true)}
+              className="flex-1 flex items-center justify-center space-x-2 bg-slate-900 text-white py-3 rounded-xl transition-all font-black uppercase text-[10px] tracking-widest hover:bg-slate-800 group/view"
+            >
+              <Calendar size={14} />
+              <span>Schedule Viewing</span>
             </button>
             <a 
               href={whatsappUrl}
@@ -141,8 +147,20 @@ export default function PropertyCard({ property, className, distance }: Property
               </motion.div>
             </a>
           </div>
+          <Link 
+            to={`/properties/${property.id}`}
+            className="w-full flex items-center justify-center space-x-2 bg-brand-green text-white py-3 rounded-xl transition-all font-black uppercase text-[10px] tracking-widest shadow-lg shadow-brand-green/20 hover:bg-brand-dark hover:shadow-brand-dark/20 mt-2 group/btn"
+          >
+            <span>More Details</span>
+            <ArrowRight size={14} className="transition-transform group-hover/btn:translate-x-1" />
+          </Link>
         </div>
       </div>
+      <ViewingModal 
+        property={property} 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+      />
     </motion.div>
   );
 }

@@ -7,6 +7,7 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Services from './pages/Services';
 import Calculator from './pages/Calculator';
+import PropertyDetails from './pages/PropertyDetails';
 import { ComparisonProvider } from './context/ComparisonContext';
 
 export default function App() {
@@ -17,6 +18,7 @@ export default function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="properties" element={<Listings />} />
+            <Route path="properties/:id" element={<PropertyDetails />} />
             <Route path="services" element={<Services />} />
             <Route path="calculator" element={<Calculator />} />
             <Route path="about" element={<About />} />
